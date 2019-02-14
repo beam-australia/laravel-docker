@@ -1,4 +1,4 @@
-FROM php:7.2.3-cli-alpine
+FROM php:7.3.2-cli-alpine
 
 MAINTAINER "Andrew McLagan " <andrew@beamaustralia.com.au>
 
