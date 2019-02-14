@@ -1,0 +1,5 @@
+FROM composer:1.8.0
+
+MAINTAINER "Andrew McLagan " <andrew@beamaustralia.com.au>
+
+RUN composer global require hirak/prestissimo

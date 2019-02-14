@@ -1,0 +1,48 @@
+FROM php:7.2.3-fpm-alpine
+
+MAINTAINER "Andrew McLagan " <andrew@beamaustralia.com.au>
+
+#
+#--------------------------------------------------------------------------
+# Install dependencies and extensions
+#--------------------------------------------------------------------------
+#
+
+RUN apk --no-cache add \
+    freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev \
+    bash \
+    && docker-php-ext-install pdo_mysql mysqli pdo_pgsql opcache pcntl \
+    && docker-php-ext-configure gd \
+    --with-jpeg-dir=/usr/lib \
+    --with-png-dir=/usr/include/ \
+    --with-freetype-dir=/usr/include/freetype2 && \
+    docker-php-ext-install gd 
+
+#
+#--------------------------------------------------------------------------
+# Folders and permissions
+#--------------------------------------------------------------------------
+#
+
+RUN && mkdir -p /var/www \
+    && mkdir -p /var/entrypoints 
+
+WORKDIR /var/www
+
+#
+#--------------------------------------------------------------------------
+# Configuration
+#--------------------------------------------------------------------------
+#
+
+ENV TERM='xterm-256color'
+
+ENV TZ='Australia/Melbourne'
+
+ENV PATH="$PATH:/var/www/vendor/bin"
+
+ADD ./laravel.ini /usr/local/etc/php/conf.d/laravel.ini
+
+ADD ./entrypoints /var/entrypoints
+
+ENTRYPOINT ["/var/entrypoints/laravel"]
