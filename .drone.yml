@@ -11,7 +11,7 @@ steps:
         from_secret: DOCKER_USERNAME
       password:
         from_secret: DOCKER_PASSWORD
-      tags: [ '7.2.3-cli' ]
+      tags: [ '7.3.2-cli' ]
 
   - name: php-fpm
     image: plugins/docker
@@ -22,7 +22,7 @@ steps:
         from_secret: DOCKER_USERNAME
       password:
         from_secret: DOCKER_PASSWORD
-      tags: [ '7.2.3-fpm' ]      
+      tags: [ '7.3.2-fpm' ]      
 
   - name: composer
     image: plugins/docker
