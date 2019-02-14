@@ -45,4 +45,4 @@ ADD ./laravel.ini /usr/local/etc/php/conf.d/laravel.ini
 
 ADD ./entrypoints /var/entrypoints
 
-ENTRYPOINT ["/var/entrypoints/laravel"]
+ENTRYPOINT ["/var/entrypoints/php-fpm"]

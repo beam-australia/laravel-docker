@@ -2,4 +2,6 @@
 
 set -e
 
-/var/entrypoints/laravel && crond
+/var/entrypoints/laravel
+
+exec crond
