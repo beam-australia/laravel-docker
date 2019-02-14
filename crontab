@@ -1,0 +1,2 @@
+* * * * * php /var/www/artisan schedule:run >> 2>&1
+# Leave one blank line below or cron will fail

@@ -11,7 +11,7 @@ MAINTAINER "Andrew McLagan " <andrew@beamaustralia.com.au>
 RUN apk --no-cache add \
     freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev \
     bash \
-    && docker-php-ext-install pdo_mysql mysqli pdo_pgsql opcache pcntl \
+    && docker-php-ext-install pdo_mysql mysqli opcache pcntl \
     && docker-php-ext-configure gd \
     --with-jpeg-dir=/usr/lib \
     --with-png-dir=/usr/include/ \
@@ -24,7 +24,7 @@ RUN apk --no-cache add \
 #--------------------------------------------------------------------------
 #
 
-RUN && mkdir -p /var/www \
+RUN mkdir -p /var/www \
     && mkdir -p /var/entrypoints 
 
 WORKDIR /var/www

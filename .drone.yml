@@ -1,7 +1,8 @@
 kind: pipeline
-name: php-cli
+name: default 
 steps:
-  - name: docker
+
+  - name: php-cli
     image: plugins/docker
     settings:
       repo: beamaustralia/php
@@ -12,13 +13,10 @@ steps:
         from_secret: DOCKER_PASSWORD
       tags: [ '7.2.3-cli' ]
 
-kind: pipeline
-name: php-fpm
-steps:
-  - name: docker
+  - name: php-fpm
     image: plugins/docker
     settings:
-      repo: beamaustralia/nginx
+      repo: beamaustralia/php
       dockerfile: Dockerfile.php-fpm
       username:
         from_secret: DOCKER_USERNAME
@@ -26,13 +24,10 @@ steps:
         from_secret: DOCKER_PASSWORD
       tags: [ '7.2.3-fpm' ]      
 
-kind: pipeline
-name: composer
-steps:
-  - name: docker
+  - name: composer
     image: plugins/docker
     settings:
-      repo: beamaustralia/nginx
+      repo: beamaustralia/composer
       dockerfile: Dockerfile.composer
       username:
         from_secret: DOCKER_USERNAME
