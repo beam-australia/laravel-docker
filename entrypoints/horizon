@@ -2,5 +2,7 @@
 
 set -e
 
-/var/entrypoints/laravel && php /var/www/artisan horizon  
+/var/entrypoints/laravel
+
+exec php /var/www/artisan horizon  
     
