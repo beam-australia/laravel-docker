@@ -1,4 +1,4 @@
-FROM php:7.3.2-fpm-alpine
+FROM php:7.3.3-fpm-alpine
 
 MAINTAINER "Andrew McLagan " <andrew@beamaustralia.com.au>
 
@@ -8,15 +8,32 @@ MAINTAINER "Andrew McLagan " <andrew@beamaustralia.com.au>
 #--------------------------------------------------------------------------
 #
 
-RUN apk --no-cache add \
-    freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev \
-    bash \
-    && docker-php-ext-install pdo_mysql mysqli opcache pcntl \
-    && docker-php-ext-configure gd \
-    --with-jpeg-dir=/usr/lib \
-    --with-png-dir=/usr/include/ \
-    --with-freetype-dir=/usr/include/freetype2 && \
-    docker-php-ext-install gd 
+RUN apk add --no-cache --virtual .build-deps \
+        $PHPIZE_DEPS \
+        freetype \
+        libpng \
+        libjpeg-turbo \
+        freetype-dev \
+        libpng-dev \
+        libjpeg-turbo-dev \
+    && apk add --no-cache \
+        bash \
+    && pecl install -o -f redis \
+    && rm -rf /tmp/pear \
+    && docker-php-ext-configure \
+        gd --with-jpeg-dir=/usr/lib --with-png-dir=/usr/include/ --with-freetype-dir=/usr/include/freetype2 \    
+    && docker-php-ext-install \
+        gd \
+        pdo_mysql \
+        mysqli \
+        opcache \
+        pcntl \
+        bcmath \
+    && docker-php-ext-enable \
+        redis \        
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer \
+    && composer global require "hirak/prestissimo" \
+    && apk del -f .build-deps
 
 #
 #--------------------------------------------------------------------------
