@@ -11,7 +11,7 @@ steps:
         from_secret: DOCKER_USERNAME
       password:
         from_secret: DOCKER_PASSWORD
-      tags: [ '7.3.2-cli' ]
+      tags: [ '7.3.3-cli' ]
 
   - name: php-fpm
     image: plugins/docker
@@ -22,15 +22,5 @@ steps:
         from_secret: DOCKER_USERNAME
       password:
         from_secret: DOCKER_PASSWORD
-      tags: [ '7.3.2-fpm' ]      
-
-  - name: composer
-    image: plugins/docker
-    settings:
-      repo: beamaustralia/composer
-      dockerfile: Dockerfile.composer
-      username:
-        from_secret: DOCKER_USERNAME
-      password:
-        from_secret: DOCKER_PASSWORD
-      tags: [ 'latest', '1.8.0' ]        
+      tags: [ '7.3.3-fpm' ]      
+    
