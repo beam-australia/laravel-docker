@@ -18,22 +18,30 @@ RUN apk add --no-cache --virtual .build-deps \
         freetype-dev \
         libpng-dev \
         libjpeg-turbo-dev \        
+    # Redis extension
     && pecl install -o -f redis \
+    && docker-php-ext-enable redis \        
     && rm -rf /tmp/pear \
-    && docker-php-ext-configure \
-        gd --with-jpeg-dir=/usr/lib --with-png-dir=/usr/include/ --with-freetype-dir=/usr/include/freetype2 \    
+    # Misic extensions
     && docker-php-ext-install \
-        gd \
         pdo_mysql \
         mysqli \
         opcache \
         pcntl \
         bcmath \
-    && docker-php-ext-enable \
-        redis \        
+    # GD image extensions
+    && docker-php-ext-configure gd \
+        --with-gd \
+        --with-freetype-dir=/usr/include/ \
+        --with-png-dir=/usr/include/ \
+        --with-jpeg-dir=/usr/include/ \
+    && NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) \
+    && docker-php-ext-install -j${NPROC} gd \
+    # composer
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer \
     && composer global require "hirak/prestissimo" \
-    && apk del -f .build-deps
+    # remove caches
+    && apk del -f .build-deps  
 
 #
 #--------------------------------------------------------------------------
