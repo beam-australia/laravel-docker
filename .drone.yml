@@ -2,25 +2,13 @@ kind: pipeline
 name: default 
 steps:
 
-  - name: php-cli
+  - name: php
     image: plugins/docker
     settings:
       repo: beamaustralia/php
-      dockerfile: Dockerfile.php-cli
       username:
         from_secret: DOCKER_USERNAME
       password:
         from_secret: DOCKER_PASSWORD
-      tags: [ '7.3.3-cli' ]
-
-  - name: php-fpm
-    image: plugins/docker
-    settings:
-      repo: beamaustralia/php
-      dockerfile: Dockerfile.php-fpm
-      username:
-        from_secret: DOCKER_USERNAME
-      password:
-        from_secret: DOCKER_PASSWORD
-      tags: [ '7.3.3-fpm' ]      
+      tags: [ '7.3.3' ]      
     
