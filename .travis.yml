@@ -8,7 +8,7 @@ script:
 
 deploy:
   provider: script
-  script: 
+  script: bash scripts/deploy.s
     - docker login -e=$DOCKER_EMAIL -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD
     - docker tag beamaustralia/php beamaustralia/php:$TRAVIS_TAG
     - docker push beamaustralia/php:$TRAVIS_TAG
