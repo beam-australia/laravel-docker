@@ -191,8 +191,9 @@ RUN apk add --no-cache --virtual .build-deps \
 #
 
 RUN mkdir -p /var/www \
-    && mkdir -p /var/entrypoints 
-
+    && mkdir -p /var/entrypoints \
+    && mkdir -p /var/log/cron \
+    && touch /var/log/cron/cron.log
 WORKDIR /var/www
 
 #
