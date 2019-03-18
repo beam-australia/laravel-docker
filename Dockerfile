@@ -209,6 +209,8 @@ ENV PATH="$PATH:/var/www/vendor/bin"
 
 ADD ./laravel.ini /usr/local/etc/php/conf.d/laravel.ini
 
+ADD php-docker.conf /usr/local/etc/php-fpm.d/
+
 ADD ./crontab /etc/crontabs/root
 
 ADD ./supervisor.conf /etc/supervisord/
