@@ -4,4 +4,4 @@ set -e
 
 /var/entrypoints/laravel
 
-exec crond -L /var/log/cron/cron.log && tail -F /var/log/cron/cron.log  
+crond -L /var/log/crond.log && tail -F /var/log/crond.log  
