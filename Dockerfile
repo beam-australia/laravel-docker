@@ -151,6 +151,7 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
 RUN apk add --no-cache --virtual .build-deps \
         $PHPIZE_DEPS \
     && apk add --no-cache \
+        supervisor \
         bash \
         freetype \
         libpng \
@@ -208,10 +209,16 @@ ENV PATH="$PATH:/var/www/vendor/bin"
 
 ADD ./laravel.ini /usr/local/etc/php/conf.d/laravel.ini
 
+ADD ./crontab /etc/crontabs/root
+
+ADD ./supervisor.conf /etc/supervisord/
+
 ADD ./entrypoints /var/entrypoints
 
-ADD ./configs /etc/nginx
+ADD ./nginx /etc/nginx
 
 EXPOSE 80 443
 
 ENTRYPOINT ["/var/entrypoints/php-fpm"]
+
+CMD /usr/bin/supervisord -n -c /etc/supervisord/supervisor.conf
