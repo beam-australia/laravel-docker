@@ -207,17 +207,17 @@ ENV TZ='Australia/Melbourne'
 
 ENV PATH="$PATH:/var/www/vendor/bin"
 
-ADD ./laravel.ini /usr/local/etc/php/conf.d/laravel.ini
+COPY ./laravel.ini /usr/local/etc/php/conf.d/laravel.ini
 
-ADD php-docker.conf /usr/local/etc/php-fpm.d/
+COPY php-docker.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 
-ADD ./crontab /etc/crontabs/root
+COPY ./crontab /etc/crontabs/root
 
-ADD ./supervisor.conf /etc/supervisord/
+COPY ./supervisor.conf /etc/supervisord/
 
-ADD ./entrypoints /var/entrypoints
+COPY ./entrypoints /var/entrypoints
 
-ADD ./nginx /etc/nginx
+COPY ./nginx /etc/nginx
 
 EXPOSE 80 443
 
