@@ -148,12 +148,20 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
 #--------------------------------------------------------------------------
 #
 
+RUN apt-get install -y \
+    libzip-dev \
+    zip \
+    && docker-php-ext-configure zip --with-libzip \
+    && docker-php-ext-install zip
+
 RUN apk add --no-cache --virtual .build-deps \
         $PHPIZE_DEPS \
     && apk add --no-cache \
         supervisor \
         bash \
         freetype \
+        zip \
+        libzip-dev \
         libpng \
         libjpeg-turbo \
         freetype-dev \
@@ -163,8 +171,11 @@ RUN apk add --no-cache --virtual .build-deps \
     && pecl install -o -f redis \
     && docker-php-ext-enable redis \        
     && rm -rf /tmp/pear \
+    # lib zip
+    && docker-php-ext-configure zip --with-libzip \
     # Misic extensions
     && docker-php-ext-install \
+        zip \
         pdo_mysql \
         mysqli \
         opcache \
