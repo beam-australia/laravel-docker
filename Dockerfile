@@ -148,12 +148,6 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
 #--------------------------------------------------------------------------
 #
 
-RUN apt-get install -y \
-    libzip-dev \
-    zip \
-    && docker-php-ext-configure zip --with-libzip \
-    && docker-php-ext-install zip
-
 RUN apk add --no-cache --virtual .build-deps \
         $PHPIZE_DEPS \
     && apk add --no-cache \
