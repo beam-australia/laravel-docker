@@ -2,14 +2,6 @@
 
 set -e
 
-echo "======================"
-echo "======================"
-
-printenv
-
-echo "======================"
-echo "======================"
-
 if [ "$PLATFORM_ENV" = "production" ] ||  [ "$PLATFORM_ENV" = "staging" ]; then
 
     php artisan config:cache
