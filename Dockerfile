@@ -1,4 +1,4 @@
-FROM php:7.3.5-fpm-alpine
+FROM php:7.3.6-fpm-alpine
 
 MAINTAINER "Andrew McLagan " <andrew@beamaustralia.com.au>
 
@@ -160,7 +160,7 @@ RUN apk add --no-cache --virtual .build-deps \
         libjpeg-turbo \
         freetype-dev \
         libpng-dev \
-        libjpeg-turbo-dev \        
+        libjpeg-turbo-dev \   
     # Redis extension
     && pecl install -o -f redis \
     && docker-php-ext-enable redis \        
