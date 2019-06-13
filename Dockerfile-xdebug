@@ -1,0 +1,10 @@
+FROM beamaustralia/php:latest
+
+#
+#--------------------------------------------------------------------------
+# Install PHP dependencies and extensions
+#--------------------------------------------------------------------------
+#
+
+RUN pecl install -o -f xdebug \
+    && docker-php-ext-enable xdebug
