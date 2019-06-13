@@ -153,6 +153,8 @@ RUN apk add --no-cache --virtual .build-deps \
     && apk add --no-cache \
         supervisor \
         bash \
+        # Yes, weare aware that we install curl twice.
+        curl \ 
         freetype \
         zip \
         libzip-dev \
