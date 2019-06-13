@@ -1,0 +1,13 @@
+kind: pipeline
+name: default
+steps:
+
+  - name: publish
+    image: plugins/docker
+    settings:
+      repo: beamaustralia/php
+      tags: ['latest', '${DRONE_TAG=${DRONE_COMMIT}}']
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
