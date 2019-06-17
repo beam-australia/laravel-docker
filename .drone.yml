@@ -11,14 +11,3 @@ steps:
         from_secret: docker_username
       password:
         from_secret: docker_password
-
-  - name: publish.xdebug
-    image: plugins/docker
-    settings:
-      repo: beamaustralia/php
-      dockerfile: Dockerfile-xdebug
-      tags: ['5.6-xdebug']
-      username:
-        from_secret: docker_username
-      password:
-        from_secret: docker_password
