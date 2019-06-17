@@ -1,4 +1,4 @@
-FROM php:7.3.6-fpm-alpine
+FROM php:5.6-fpm-alpine
 
 MAINTAINER "Andrew McLagan " <andrew@beamaustralia.com.au>
 

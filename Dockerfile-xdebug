@@ -1,4 +1,4 @@
-FROM beamaustralia/php:latest
+FROM beamaustralia/php:5.6
 
 #
 #--------------------------------------------------------------------------

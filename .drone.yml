@@ -6,7 +6,7 @@ steps:
     image: plugins/docker
     settings:
       repo: beamaustralia/php
-      tags: ['latest', '${DRONE_TAG=${DRONE_COMMIT}}']
+      tags: ['5.6']
       username:
         from_secret: docker_username
       password:
@@ -17,7 +17,7 @@ steps:
     settings:
       repo: beamaustralia/php
       dockerfile: Dockerfile-xdebug
-      tags: ['xdebug','${DRONE_TAG=${DRONE_COMMIT}}-xdebug']
+      tags: ['5.6-xdebug']
       username:
         from_secret: docker_username
       password:
