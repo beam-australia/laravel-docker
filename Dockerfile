@@ -1,4 +1,4 @@
-FROM php:7.3.6-fpm-alpine
+FROM php:7.3.9-fpm-alpine
 
 MAINTAINER "Andrew McLagan " <andrew@beamaustralia.com.au>
 
@@ -177,6 +177,8 @@ RUN apk add --no-cache --virtual .build-deps \
         opcache \
         pcntl \
         bcmath \
+        fileinfo \
+        exif \        
     # GD image extensions
     && docker-php-ext-configure gd \
         --with-gd \
