@@ -168,7 +168,7 @@ RUN apk add --no-cache --virtual .build-deps \
     && docker-php-ext-enable redis \        
     && rm -rf /tmp/pear \
     # lib zip
-    && docker-php-ext-configure zip --with-libzip \
+    && docker-php-ext-configure zip \
     # Misic extensions
     && docker-php-ext-install \
         zip \
