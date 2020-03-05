@@ -1,4 +1,4 @@
-FROM php:7.4.0-fpm-alpine
+FROM php:7.4.3-fpm-alpine
 
 MAINTAINER "Andrew McLagan " <andrew@beamaustralia.com.au>
 
@@ -172,6 +172,8 @@ RUN apk add --no-cache --virtual .build-deps \
     # Misic extensions
     && docker-php-ext-install \
         zip \
+        pdo \
+        pdo_pgsql \        
         pdo_mysql \
         mysqli \
         opcache \
