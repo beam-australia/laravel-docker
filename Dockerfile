@@ -171,7 +171,6 @@ RUN apk add --no-cache --virtual .build-deps \
     && docker-php-ext-install \
         zip \
         pdo \
-        pdo_pgsql \        
         pdo_mysql \
         mysqli \
         opcache \
