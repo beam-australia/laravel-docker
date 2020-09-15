@@ -1,6 +1,4 @@
-FROM php:7.4.3-fpm-alpine
-
-MAINTAINER "Andrew McLagan " <andrew@beamaustralia.com.au>
+FROM php:7.4.10-fpm-alpine
 
 #
 #--------------------------------------------------------------------------
@@ -155,7 +153,6 @@ RUN apk add --no-cache --virtual .build-deps \
         bash \
         # Yes, weare aware that we install curl twice.
         curl \ 
-        postgresql-dev \
         freetype \
         zip \
         libzip-dev \

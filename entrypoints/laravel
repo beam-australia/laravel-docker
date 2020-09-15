@@ -8,8 +8,6 @@ if [ "$PLATFORM_ENV" = "production" ] ||  [ "$PLATFORM_ENV" = "staging" ]; then
 
     php artisan route:cache
 
-    php artisan passport:keys
-
     echo 'opcache.validate_timestamps=0' >> /usr/local/etc/php/conf.d/php-fpm.ini
 
 fi

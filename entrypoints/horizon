@@ -5,4 +5,3 @@ set -e
 /var/entrypoints/laravel
 
 exec php /var/www/artisan horizon  
-    
