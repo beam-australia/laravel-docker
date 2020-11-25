@@ -4,7 +4,7 @@ set -e
 
 if [ "$PLATFORM_ENV" = "production" ] ||  [ "$PLATFORM_ENV" = "staging" ]; then
 
-    php artisan flex:cache
+    php artisan config:cache
 
     echo 'opcache.validate_timestamps=0' >> /usr/local/etc/php/conf.d/php-fpm.ini
 
