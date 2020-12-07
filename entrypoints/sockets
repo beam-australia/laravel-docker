@@ -4,4 +4,4 @@ set -e
 
 /var/entrypoints/laravel
 
-exec php /var/www/artisan websockets:serve 
+exec php /var/www/artisan websockets:serve -vvv
