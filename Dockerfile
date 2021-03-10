@@ -1,4 +1,4 @@
-FROM php:8.0.0RC5-fpm-alpine
+FROM php:7.4.16-fpm-alpine
 
 ENV TERM='xterm-256color'
 ENV TZ='Australia/Melbourne'
