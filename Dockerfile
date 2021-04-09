@@ -1,11 +1,11 @@
-FROM php:7.4.16-fpm-alpine
+FROM php:8.0.3-fpm-alpine
 
 ENV TERM='xterm-256color'
 ENV TZ='Australia/Melbourne'
 ENV PATH="$PATH:/var/www/vendor/bin"
 ENV COMPOSER_HOME /tmp
 ENV COMPOSER_ALLOW_SUPERUSER 1
-ENV COMPOSER_VERSION 2.0.4
+ENV COMPOSER_VERSION 2.0.12
 ENV NGINX_VERSION 1.15.9
 
 #
@@ -167,7 +167,8 @@ RUN apk add --no-cache --virtual .build-deps \
         libjpeg-turbo \
         freetype-dev \
         libpng-dev \
-        libjpeg-turbo-dev \   
+        libjpeg-turbo-dev \  
+        mariadb-client \ 
     # Redis extension
     && pecl install -o -f redis \
     && docker-php-ext-enable redis \        
