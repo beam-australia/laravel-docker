@@ -2,55 +2,22 @@ kind: pipeline
 name: default
 steps:
   - name: publish
-    image: thegeeklab/drone-docker-buildx
-    privileged: true
+    image: plugins/docker
     settings:
       repo: beamaustralia/php
-      tags:
-        - "latest"
-        - "${DRONE_TAG=${DRONE_COMMIT}}"
-      platforms:
-        - amd64
-        - arm64v8
+      tags: ["latest", "${DRONE_TAG=${DRONE_COMMIT}}"]
       username:
         from_secret: docker_username
       password:
         from_secret: docker_password
 
   - name: publish.xdebug
-    image: thegeeklab/drone-docker-buildx
-    privileged: true
+    image: plugins/docker
     settings:
       repo: beamaustralia/php
       dockerfile: Dockerfile-xdebug
-      tags:
-        - "xdebug"
-        - "${DRONE_TAG=${DRONE_COMMIT}}-xdebug"
-      platforms:
-        - amd64
-        - arm64v8
+      tags: ["xdebug", "${DRONE_TAG=${DRONE_COMMIT}}-xdebug"]
       username:
         from_secret: docker_username
       password:
         from_secret: docker_password
-
-  # - name: publish
-  #   image: plugins/docker
-  #   settings:
-  #     repo: beamaustralia/php
-  #     tags: ['latest', '${DRONE_TAG=${DRONE_COMMIT}}']
-  #     username:
-  #       from_secret: docker_username
-  #     password:
-  #       from_secret: docker_password
-
-  # - name: publish.xdebug
-  #   image: plugins/docker
-  #   settings:
-  #     repo: beamaustralia/php
-  #     dockerfile: Dockerfile-xdebug
-  #     tags: ['xdebug','${DRONE_TAG=${DRONE_COMMIT}}-xdebug']
-  #     username:
-  #       from_secret: docker_username
-  #     password:
-  #       from_secret: docker_password
