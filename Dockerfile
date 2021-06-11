@@ -1,3 +1,5 @@
+ARG ARCH=
+
 FROM php:8.0.3-fpm-alpine
 
 ENV TERM='xterm-256color'
