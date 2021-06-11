@@ -3,6 +3,7 @@ name: default
 steps:
   - name: publish
     image: thegeeklab/drone-docker-buildx
+    privileged: true
     settings:
       repo: beamaustralia/php
       tags:
@@ -18,6 +19,7 @@ steps:
 
   - name: publish.xdebug
     image: thegeeklab/drone-docker-buildx
+    privileged: true
     settings:
       repo: beamaustralia/php
       dockerfile: Dockerfile-xdebug
