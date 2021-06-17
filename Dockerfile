@@ -1,6 +1,6 @@
 ARG ARCH=
 
-FROM php:8.0.7-fpm-alpine
+FROM php:8.1-rc-fpm-alpine
 
 ENV TERM='xterm-256color'
 ENV TZ='Australia/Melbourne'
